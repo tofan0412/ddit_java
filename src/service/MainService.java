@@ -1,5 +1,6 @@
 package service;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 import util.ViewEnum;
 
@@ -24,15 +25,20 @@ public class MainService {
         System.out.println("원하시는 메뉴를 선택해 주세요.");
         System.out.println("1. 회원 로그인 2. 관리자 로그인 3. 회원가입");
         System.out.println("⌞⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⌟");
-        int choice = sc.nextInt();
 
-        switch (choice) {
-            case 1:
+        try {
+            int choice = sc.nextInt();
+
+            return switch (choice) {
                 // 회원 로그인에 해당하는 int 반환
-            case 2:
-                return ViewEnum.ADMIN_LOGIN;
-            default:
-                return ViewEnum.HOME_MAIN;
+                case 1, 2 -> ViewEnum.ADMIN_LOGIN;
+                default -> ViewEnum.HOME_MAIN;
+            };
+        } catch (InputMismatchException e) {
+            System.out.println("숫자를 입력해 주세요.");
+            sc = new Scanner(System.in);
+            return ViewEnum.HOME_MAIN;
         }
+
     }
 }
