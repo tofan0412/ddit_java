@@ -25,13 +25,19 @@ public class Controller {
 	public void init() {
 		int VIEW = 1;
 		while (true) {
-			VIEW = switch (VIEW) {
-				case ViewEnum.HOME_MAIN -> mainService.home();
-				case ViewEnum.ADMIN_LOGIN -> adminService.adminLogin();
-				case ViewEnum.ADMIN_HOME -> adminService.adminHome();
-				case ViewEnum.ADMIN_NOTICE_WRITE -> adminService.adminNoticeWrite();
-				case ViewEnum.ADMIN_NOTICE_LIST -> adminService.adminNoticeList();
-				default -> ViewEnum.HOME_MAIN;
+			switch (VIEW) {
+				case ViewEnum.HOME_MAIN:
+					VIEW = mainService.home();
+				case ViewEnum.ADMIN_LOGIN:
+					VIEW = adminService.adminLogin();
+				case ViewEnum.ADMIN_HOME:
+					VIEW = adminService.adminHome();
+				case ViewEnum.ADMIN_NOTICE_WRITE:
+					VIEW = adminService.adminNoticeWrite();
+				case ViewEnum.ADMIN_NOTICE_LIST:
+					VIEW = adminService.adminNoticeList();
+				default:
+					VIEW = ViewEnum.HOME_MAIN;
 			};
 		}
 	}

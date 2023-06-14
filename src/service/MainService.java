@@ -29,11 +29,15 @@ public class MainService {
         try {
             int choice = sc.nextInt();
 
-            return switch (choice) {
+            switch (choice) {
                 // 회원 로그인에 해당하는 int 반환
-                case 1, 2 -> ViewEnum.ADMIN_LOGIN;
-                default -> ViewEnum.HOME_MAIN;
-            };
+                case 1:
+                    return ViewEnum.ADMIN_LOGIN;
+                case 2:
+                    return ViewEnum.ADMIN_LOGIN;
+                default:
+                    return ViewEnum.HOME_MAIN;
+            }
         } catch (InputMismatchException e) {
             System.out.println("숫자를 입력해 주세요.");
             sc = new Scanner(System.in);
