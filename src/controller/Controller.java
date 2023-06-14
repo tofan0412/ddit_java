@@ -28,17 +28,22 @@ public class Controller {
 			switch (VIEW) {
 				case ViewEnum.HOME_MAIN:
 					VIEW = mainService.home();
+					break;
 				case ViewEnum.ADMIN_LOGIN:
 					VIEW = adminService.adminLogin();
+					break;
 				case ViewEnum.ADMIN_HOME:
 					VIEW = adminService.adminHome();
+					break;
 				case ViewEnum.ADMIN_NOTICE_WRITE:
 					VIEW = adminService.adminNoticeWrite();
+					break;
 				case ViewEnum.ADMIN_NOTICE_LIST:
 					VIEW = adminService.adminNoticeList();
+					break;
 				default:
 					VIEW = ViewEnum.HOME_MAIN;
-			};
+			}
 		}
 	}
 }
